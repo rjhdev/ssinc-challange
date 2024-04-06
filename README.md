@@ -49,7 +49,7 @@ To remove the ECR instance, use 'make destroy_ecr'.
 
 ## GitHub Actions for CI/CD
 
-The .github/workflows/deploy.yml file automates the deployment with GitHub Actions. This CI/CD pipeline triggers on commits to the repository, automating the building of the Docker image and its deployment to AWS ECS.
+The .github/workflows/deploy.yml file automates the deployment with GitHub Actions. This CI/CD pipeline triggers on commits to the repository, automating the building of the Docker image and its deployment to AWS ECR.
 
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
@@ -57,4 +57,3 @@ The .github/workflows/deploy.yml file automates the deployment with GitHub Actio
 ### Important Notes
 
 Make sure 'Repository secrets' in the Actions secrets and variables section of the Actions section contains these keys and their correct IDs for the action to complete successfullly.
-
