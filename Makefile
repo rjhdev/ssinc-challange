@@ -1,5 +1,5 @@
 # Variables
-ACCOUNT_ID = 637423461657
+ACCOUNT_ID = _SET_YOUR_AWS_ACCOUNT_ID_
 REGION = ap-southeast-2
 REPOSITORY = ssc-test-repo
 IMAGE_TAG = latest
