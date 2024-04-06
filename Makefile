@@ -3,7 +3,7 @@ ACCOUNT_ID = 637423461657
 REGION = ap-southeast-2
 REPOSITORY = ssc-test-repo
 IMAGE_TAG = latest
-ECR_IMAGE_URI=${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${REPOSITORY}:${IMG_TAG}
+ECR_IMAGE_URI=${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${REPOSITORY}:${IMAGE_TAG}
 
 vars:
 	@echo "Account ID: $(ACCOUNT_ID)"
@@ -29,12 +29,10 @@ destroy_ecs:
 
 # Build docker image
 build_docker: vars
-	cd app
-	docker build -t ${REPOSITORY} .
+	cd app && docker build -t ${REPOSITORY} .
 
 # Push built docker image to ECR
 docker_ecr_push: vars
-	cd app
-	aws ecr get-login-password --region ${REGION} --profile | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+	cd app && aws ecr get-login-password --region ${REGION} --profile terraform | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
 	docker tag ${REPOSITORY}:${IMAGE_TAG} ${ECR_IMAGE_URI}
 	docker push ${ECR_IMAGE_URI}
