@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # Fetch the ALB DNS name from terraform state
 ALB_DNS="$(terraform output -state=tf/terraform.tfstate -raw alb_dns_name)"
